@@ -1,0 +1,35 @@
+# Toolbar Extra Configuration
+#
+# Making alterations to this file may require you to also increase Toolbar's
+# WimpSlot.
+#
+# Coordinates and sizes are given in OS units.
+#
+# >>> Do not delete or alter this file unless you know what you're doing! <<<
+# 
+# Name of the Sprites‘ file to use
+Sprites
+# Maximum text length
+32
+# Maximum sprite length
+13
+# Maximum file name length
+256
+# Button minimum (do not change)
+3
+# Maximum number of buttons
+32
+# Height of buttons (44 is a good alternative)
+52
+# Toolbar width (-1 to work it out from sprites)
+-1
+# Toolbar title bar text (up to 31 characters)
+Toolbar
+# Filer_Boot apps on startup ("Yes" or "No")
+Yes
+# Single clicks will woosh down the bar ("Yes" or "No")
+No
+# Time to take when wooshing (seconds)
+0.5
+# Stops "Quit" working (hold down Shift to force a quit from Task Manager)
+0

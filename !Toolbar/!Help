@@ -1,0 +1,211 @@
+_____________________________________________________________________________
+
+                                T o o l b a r
+
+                           Pull-down app launcher
+
+                    Written by David Thomas, © 1996-2020
+                       
+                         version 1.22 (21 Aug 2020)
+_____________________________________________________________________________
+
+
+Overview
+________
+
+Toolbar is pull-down bar which can be used to launch applications, run files
+and open directories. It can be configured to reside on either on the top
+left or right-hand side of the desktop and stores the names of up to 32
+different objects.
+
+
+Usage
+-----
+
+Load Toolbar by double-clicking on its icon in a directory display. It will
+load and display its title bar on the top left-hand side of the screen.
+
+The toolbar is initially empty; you will not be able to pull it down onto the
+screen. To add an application, directory or file (henceforth, an object) to
+the toolbar drag it onto the title bar visible in the top left-hand part of
+the screen. It will be added to the toolbar and you will be able to pull the
+toolbar down.
+
+Each object has a button created for it with a small sprite to the left of
+the button. (The sprite is not part of the actual button, and clicking on it
+will have no effect). To launch the object you have added to the toolbar,
+just click SELECT over it. Once you click, the object is launched and the
+toolbar will retract back into its original position. Alternatively, clicking
+with ADJUST will launch the object, but will keep the toolbar from
+retracting.
+
+Clicking MENU will open a menu with the standard Info and Quit entries on it,
+plus three others. "Remove" will remove the object that was under the pointer
+when you clicked MENU. "Save" will store the current configuration which will
+be autmatically restored when Toolbar is next run. "Right" toggles the side
+of the screen on which toolbar resides (this option is stored when the
+configuration is saved).
+
+Double-clicking on the title bar will either make Toolbar extend to its full
+extent or make it retract into its standard position. Whether it extends or
+retracts depends on what position it is currently in - if it's in its
+standard position then it will extend, otherwise it will retract.
+
+The toolbar can be controlled with two key combinations. The first, Ctrl-T,
+has the same effect as double-clicking on the title bar. The second,
+Shift-Ctrl-T, will bring the Toolbar to the top of the window stack. Using
+Shift-Ctrl-T when the Toolbar is at the top of the window stack will send it
+to the bottom. This will only work when another application is not currently
+accepting the Ctrl-T keypresses, so editor windows must not have the input
+focus.
+
+
+Multiple Toolbars
+-----------------
+
+You can have multiple toolbars by invoking Toolbar multiple times. A system
+variable, Toolbar%ActiveMask records which instances are running. Each
+toolbar assigns itself the next free slot, positions itself accordingly and
+reads its configuration from <Choices$Write>.Toolbar<N>.
+
+
+Notes
+-----
+
+ - The configuration will be saved to <Choices$Write>.Toolbar.
+
+ - There is additional configuration available in the !Toolbar.Extras file.
+
+ - There is a default limit of 32 objects. This can be changed by editing the
+   Extras file.
+
+ - The longest object leafname you should use with Toolbar is 31.
+   32-character names will corrupt the next button's contents. Again you can
+   increase this limit in the Extras file.
+   
+ - You can freely position the toolbar by holding down Ctrl while dragging.
+
+
+History
+-------
+
+1.22 (21 Aug 2020)
+ - Another decade passes.
+ - Since Filer 2.40 and above inhibits Shift-run we now "Filer_Run -Shift
+   ..." on those versions of the Filer.
+
+1.21 (31 Jul 2009)
+ - FNvar was terminating memory that it didn't own. RISC OS 6 correctly
+   faulted this. Fixed.
+
+1.20 (29 Jul 2009)
+ - A decade passes.
+ - Toolbars now 'woosh' (unfurl/retract) at a constant speed even if the
+   desktop is heavily loaded.
+ - You can have multiple toolbars by running it multiple times.
+ - !RunImage is no longer squashed.
+
+1.08 (31 Dec 1998)
+ - Fix: Buttons weren't working when single-click operation was configured.
+
+1.07 (30 Dec 1998)
+ - Minor adjustments.
+
+1.06 (29 Dec 1998)
+ - Click actions were incorrect, causing problems on RISC OS 3.8.
+ - Wimp_Initialise now specifies 310.
+ - Extra configuration provided in !Toolbar.Extras, which allows the
+   following values to be configured:
+   - Name of the êSpritesë file to use
+   - Maximum number of buttons
+   - Height of buttons
+   - Toolbar width
+   - Toolbar title bar height
+   - Toolbar title bar text
+   - Filer_Boot apps on startup
+   - Single click operation
+   - Wooshiness
+   - and a number of internal values.
+
+1.05 (10 Jan 1998) / (03 Mar 1998)
+ - The toolbar now retracts to itës default position on a mode change
+   (MField).
+ - Wimp auto-redraw had been left off.  Oops.  Should be faster now.
+ - Simplified certain sections of the code.
+ - If youëre prepared to delve into !RunImage, altering Q% will change the
+   width of the bar.  Altering l% will change the height of the buttons.
+
+1.04 (14 Oct 1997)
+ - First Freeware release.
+ - Ctrl-T changed to Shift-Ctrl-T, Ctrl-T now behaves like double-clicking
+   on the title bar.
+ - Reference to TIME replaced with a SYS OS_ReadMonotonicTime.
+ - Changes to the width of the toolbar.
+ - The prog_info window has been altered.
+ - êWonët obscure icon barë behaviour removed.
+
+1.03 (08 Nov 1996)
+ - Acorn User release
+ - The window frame is now considered part of the title bar, so it can be
+   double-clicked and dragged etc. to move the window.
+ - All applications are now Filer_Booted, such that their icons appear.
+   (thomës suggestion)
+ - The toolbar will now never obscure the icon bar.
+ - Now uses PollIdle and masks out null polls.
+
+1.02 (14 Oct 1996)
+ - Double-clicking the title bar now makes the window scroll up and down
+   into position.
+ - Ctrl-T implemented - toggles the window between the top and bottom or the
+   window stack.
+ - <Choices$Write>.Toolbar is used for options if itës available.
+
+1.01 (08 Oct 1996)
+ - Now works in ê24ë modes at the expense of the window looking slightly
+   less authentic (a black horizontal bar is now missing).
+ - Needs 4K more. :-(
+ - Various bugs splatted.
+
+1.00 (23 Aug 1996)
+ - First version.
+
+
+Copyright and License
+_____________________
+
+Copyright © 1996-2020, David Thomas. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice,
+   this list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS îAS ISï
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+
+Contact Addresses
+_________________
+
+If you have any comments, bug reports or suggestions for future versions then
+you can contact dave@davespace.co.uk.
+
+If you have a question, then please check it has not already been answered in
+this documentation before mailing.
+
+_____________________________________________________________________________
+

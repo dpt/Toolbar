@@ -1,0 +1,33 @@
+| >MkRelease
+
+Set APP !Toolbar
+Set ARC toolbar
+Set V 	122-1
+
+Set MkRelease$Dir <Obey$Dir>
+Dir <MkRelease$Dir>
+
+Set C <Obey$Dir>.<ARC><V>-release
+CDir <C>
+
+Copy Package.* 		<C>.* ~CFR~V
+
+Set D <C>.Apps.Desktop.<APP>
+CDir <D>
+
+Copy <APP>.!Help      	<D>.* ~CFR~V
+Copy <APP>.!Run       	<D>.* ~CFR~V
+Copy <APP>.!RunImage  	<D>.* ~CFR~V
+Copy <APP>.!Sprites   	<D>.* ~CFR~V
+Copy <APP>.!Sprites22  	<D>.* ~CFR~V
+Copy <APP>.Extras   	<D>.* ~CFR~V
+Copy <APP>.Sprites    	<D>.* ~CFR~V
+Copy <APP>.Sprites22   	<D>.* ~CFR~V
+Copy <APP>.Templates  	<D>.* ~CFR~V
+|
+| Zip up
+|
+Dir <C>
+Do zip -9mru -I ^.<ARC><V>/zip @
+
+Dir <MkRelease$Dir>
